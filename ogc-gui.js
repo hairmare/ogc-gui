@@ -2,10 +2,13 @@
 "use strict";
 
 var program = require('commander');
+var bunyan  = require('bunyan');
 var express = require('express');
+var elogger = require('express-bunyan-logger');
 var fs      = require('fs');
 
 var running = false;
+var logger  = bunyan.createLogger({name: 'ogc-gui'});
 
 program.version(require('./package.json').version)
        .usage("<Command> - run the ogc gui\n\n    Please refer to each commands --help for details now how to run each service.");
@@ -17,10 +20,11 @@ program.command('serve')
        .action(function (options) {
          var app = express();
 
+         app.use(elogger({name: 'ogc-gui'}));
          app.use(express.static(options.sourceDir));
 
          var server = app.listen(options.listenPort, function() {
-           console.log('server hosting %s on http://%s:%s', options.sourceDir, server.address().address, server.address().port);
+           logger.info({address: server.address().address, port: server.address().port, source: options.sourceDir}, 'ogc-gui server initialized');
          });
          running = true;
        });
