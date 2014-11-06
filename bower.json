@@ -1,0 +1,24 @@
+{
+  "name": "ogc-gui",
+  "version": "0.0.0",
+  "homepage": "https://github.com/coreos/coreos-vagrant",
+  "authors": [
+    "Lucas Bickel <hairmare@purplehaze.ch>"
+  ],
+  "license": "AGPL",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "bootstrap": "~3.3.0",
+    "jquery-routes": "*",
+    "pagerjs": "~1.0.1",
+    "jquery.rest": "~1.0.2"
+  }
+}

@@ -1,0 +1,41 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset="utf-8")
+    title='Online GLSA Checker'
+    link(rel="stylesheet")
+    style
+      include ../../bower_components/bootstrap/dist/css/bootstrap.min.css
+      include ../../bower_components/bootstrap/dist/css/bootstrap-theme.min.css
+  body
+    include _navbar.jade
+    div.container#main
+      div(data-bind="page: {id: 'start'}")
+        h2 Welcome to Online GLSA Checker
+      div(data-bind="page: {id: 'search'}")
+        h2 Search Online GLSA Checker
+        form#searchForm.form-inline(role="form" style="width:100%")
+          div.form-group.col-xm-14(style="width:100%")
+            input#query.form-control(type="text" placeholder="Search" style="width:100%")
+      div(data-bind="page: {id: 'image', params: ['id'], withOnShow: loadImage }")
+        include image.jade
+      div(data-bind="page: {id: 'build', params: ['id'], withOnShow: loadBuild }")
+        include build.jade
+      div(data-bind="page: {id: 'about'}")
+        h2 About
+        p.well I'll tell you what OGC is when I get to writing this.
+
+  script
+    include ../../bower_components/jquery/dist/jquery.min.js
+  script
+    include ../../bower_components//knockoutjs/dist/knockout.js
+  script
+    include ../../bower_components/pagerjs//dist/pager.min.js
+  script
+    include ../../bower_components/bootstrap/dist/js/bootstrap.min.js
+  script
+    include ../../bower_components/jquery.rest/dist/1/jquery.rest.min.js
+
+  script
+    include ../main.js
+

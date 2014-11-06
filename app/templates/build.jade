@@ -1,0 +1,23 @@
+div.container
+  h2
+    a(data-bind="text: image.name, page-href: { path: '/image/about', params: {id: image.name} }")
+    span :
+    span(data-bind="text: _id")
+  div.alert.alert-success(data-bind="visible: runStage == 'done'") Build finished
+  div.alert.alert-info(data-bind="visible: runStage != 'done'") Build finished
+
+  h3 Results
+  table.table.table-hover
+    tr
+      th Started
+      td(data-bind="text: date")
+
+  h3 Logs
+
+  div(data-bind="foreach: [{name:'Pull', data: pull}, {name:'Run', data: run}, {name:'Result', data:result}, {name:'Clean', data:clean}]")
+    h4
+      span(data-bind="text: name")
+    div(data-bind="text: data.date")
+    table.table.table-hover(data-bind="foreach: data.log")
+      tr
+        td(data-bind="text:$data") 

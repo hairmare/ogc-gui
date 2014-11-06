@@ -1,0 +1,64 @@
+div.container
+  h2(data-bind="text: _id")
+  p.well.well
+    span(data-bind="text: hub.description")
+
+  div.alert.alert-warning(data-bind="visible: syncHub") Not synced with Docker Hub.
+
+  div.btn-group.pull-right
+    button.btn.btn-default(type="button") Manage
+      span.caret
+    button.btn.btn-primary(type="button") Build
+
+  div
+    ul.nav.nav-tabs(role="tablist" data-bind="foreach: $page.children")
+      li(role="presentation" data-bind="css: {active: isVisible}")
+        a(href="#" data-bind="text: $data.val('title'), page-href: { path: $data.id(), params: {id: $parent._id} } ")
+
+    div(data-bind="page: {id: 'about', title: 'About'}")
+      table.table.table-hover
+        thead
+          tr
+            th.text-center(colspan=2) Docker Hub Infos
+        tr
+          th Name
+          td(data-bind="text: _id")
+        tr
+          th Is official
+          td(data-bind="text: hub.is_official")
+        tr
+          th Is trusted
+          td(data-bind="text: hub.is_trusted")
+        tr
+          th Stars
+          td
+            span(data-bind="foreach: ko.utils.range(1, hub.star_count)")
+              span.glyphicon.glyphicon-star
+
+      table.table.table-hover
+        thead
+          tr
+            th.text-center(colspan=2) Online GLSA Checker Infos
+        tr
+          th Date added
+          td(data-bind="text: date")
+        tr
+          th Version
+          td(data-bind="text: __v")
+
+
+    div(data-bind="page: {id: 'builds', title: 'Builds'}")
+      table.table.table-hover
+        thead
+          tr
+            th.text-center(colspan=3) Recent Builds
+        tbody(data-bind="foreach: recentBuilds")
+          tr
+            td
+              a.btn.btn-primary(href="#" data-bind="page-href: { path: '/build', params: { id: _id } }") Show Report
+            td(data-bind="text: _id")
+            td(data-bind="text: date")
+
+        
+
+
