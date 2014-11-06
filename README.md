@@ -16,7 +16,7 @@ docker pull hairmare/ogc-gui
 Call it using ``docker run hairmare/ogc-gui``.
 
 ```
-  Usage: server <Command> - run the ogc gui
+  Usage: ogc-gui <Command> - run the ogc gui
 
     Please refer to each commands --help for details now how to run each service.
 
