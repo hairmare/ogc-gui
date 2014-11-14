@@ -1,5 +1,7 @@
 # Online GLSA Checker GUI
 
+[![Docker badge](http://img.shields.io/badge/Docker-hairmare%2Fogc--gui-008bb8.svg)](https://registry.hub.docker.com/u/hairmare/ogc-gui/) [![HuBoard badge](http://img.shields.io/badge/Hu-Board-7965cc.svg)](https://huboard.com/hairmare/ogc)
+
 Main GUI for OGC. Built for [docker](https://docker.io).
 
 The main GUI is a HTML5 website that gets hosted staticallty. This

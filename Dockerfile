@@ -1,6 +1,10 @@
 FROM hairmare/node
 Maintainer Lucas Bickel <hairmare@purplehaze.ch>
 
+# install build deps
+
+RUN emerge -q dev-vcs/git
+
 # stage app
 
 COPY ogc-gui.js   /usr/local/src/ogc-gui/ogc-gui.js
@@ -13,7 +17,6 @@ COPY app          /usr/local/src/ogc-gui/app
 # build app
 
 RUN cd /usr/local/src/ogc-gui; \
-    emerge -q dev-vcs/git && \
     npm install && \
     npm install grunt-cli && \
     ./node_modules/grunt-cli/bin/grunt

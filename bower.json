@@ -19,6 +19,7 @@
     "bootstrap": "~3.3.0",
     "jquery-routes": "*",
     "pagerjs": "~1.0.1",
-    "jquery.rest": "~1.0.2"
+    "jquery.rest": "~1.0.2",
+    "github-fork-ribbon-css": "~0.1.1"
   }
 }

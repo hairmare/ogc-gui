@@ -1,5 +1,9 @@
 $(document).ready(function() {
 
+  var client = new $.RestClient('/', {stripTrailingSlash: true, stringifyData: true});
+  client.add('images');
+  client.add('builds');
+
   function ViewModel() {
     this.image = {
       "__v": 0,
@@ -58,17 +62,42 @@ $(document).ready(function() {
     this.loadBuild = function(callback, page) {
       client.builds.read(page.ctx.id()).done(callback);
     }
-  };
+    var search = {
+      search: ko.observable(""),
+      results: ko.observable([])
+    };
+    search.search.subscribe(function(query) {
+      console.log("saerching for", query);
+      client.images.read({name: '~' + query}).done(function(results) {
+        console.log("got reesults", results);
+        search.results(results);
+      });
+    });
+    this.search = search;
 
-  var client = new $.RestClient('http://localhost:8090/', {stripTrailingSlash: true});
-  client.add('images');
-  client.add('builds');
+    var add = {
+      name: ko.observable(""),
+      addImage: function(form) {
+        console.log("adding image", form.addImage.value);
+        client.images.create({
+          "name": form.addImage.value
+        }).done(function(image) {
+          console.log("image was added ", image);
+          window.location.hash = '#image/about?id='+image._id;
+        });
+      }
+    }
+    add.name.subscribe(function(image) {
+      // @todo implement me properly
+      console.log("checking image", image);
+    });
+    this.add = add;
+  };
 
   var model = new ViewModel();
 
   pager.extendWithPage(model);
   ko.applyBindings(model);
   pager.start();
-
 
 });

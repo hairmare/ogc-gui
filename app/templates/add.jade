@@ -1,0 +1,7 @@
+h2 Add Image to Online GLSA Checker
+p Tell us the name of your image on #[a(href="https://hub.docker.com") hub.docker.com] to get started.
+form#addForm.form(role="form" data-bind="submit: addImage")
+  div.form-group
+    label.sr-only(for="addImage") Add Image
+    input.form-control#addImage(type="text" placeholder="username/image" data-bind="textInput: name" autofocus)
+  button.btn.btn-primary.pull-right(type="submit") Add image and trigger first build

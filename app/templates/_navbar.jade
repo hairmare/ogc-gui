@@ -8,8 +8,12 @@ nav.navbar-default.navbar-liquid(role="navigation")
         span.icon-bar
       a.navbar-brand(data-bind="page-href:'start'") Online GLSA Checker
     .collapse.navbar-collapse.navbar-ex1-collapse
-      ul.nav.navbar-nav
-        li.api-nav
-          a(data-bind="page-href:'search'") Search
-        li.api-nav
-          a(data-bind="page-href:'about'") About
+      ul.nav.navbar-nav.pull-right
+        li.api-nav(data-bind="css: {active: pager.activePage$().currentId == 'search'}")
+          a(data-bind="page-href:'search'")
+            span.glyphicon.glyphicon-search  
+            |  Search
+        li.api-nav(data-bind="css: {active: pager.activePage$().currentId == 'add'}")
+          a(data-bind="page-href:'add'")
+            span.glyphicon.glyphicon-plus
+            |  Add

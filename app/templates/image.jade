@@ -1,5 +1,5 @@
 div.container
-  h2(data-bind="text: _id")
+  h2(data-bind="text: name")
   p.well.well
     span(data-bind="text: hub.description")
 
@@ -22,7 +22,7 @@ div.container
             th.text-center(colspan=2) Docker Hub Infos
         tr
           th Name
-          td(data-bind="text: _id")
+          td(data-bind="text: name")
         tr
           th Is official
           td(data-bind="text: hub.is_official")
@@ -54,11 +54,7 @@ div.container
             th.text-center(colspan=3) Recent Builds
         tbody(data-bind="foreach: recentBuilds")
           tr
+            td(data-bind="text: _id" style="vertical-align:middle")
+            td(data-bind="text: date" style="vertical-align:middle")
             td
-              a.btn.btn-primary(href="#" data-bind="page-href: { path: '/build', params: { id: _id } }") Show Report
-            td(data-bind="text: _id")
-            td(data-bind="text: date")
-
-        
-
-
+              a.btn.btn-sm.btn-primary.pull-right(href="#" data-bind="page-href: { path: '/build', params: { id: _id } }") Show Build Results

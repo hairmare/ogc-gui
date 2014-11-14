@@ -1,3 +1,13 @@
-div.container
-  form
-    input
+h2 Search Online GLSA Checker
+form#searchForm.form(role="form")
+  div.form-group
+    input#query.form-control(type="text" placeholder="Search" data-bind="textInput: search" autofocus)
+hr
+table.table.table-hover.table-bordered
+  thead
+    tr
+      th.text-center Results
+  tbody(data-bind="foreach: results")
+    tr
+      td
+        a(data-bind="text: $data.name, page-href: {path: '../image/about', params: {id: $data._id}}")

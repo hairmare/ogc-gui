@@ -1,0 +1,29 @@
+p.lead(style="margin-top: 1em") Runs in the cloud and checks your systems against GLSAs at regular intervals.
+div.row
+  p.col-md-8
+    img.img-responsive(src="http://placehold.it/800x450")
+  p.col-md-4.text-justify
+    | Tell us which docker images support #[code(style="white-space: nowrap;") emerge @security] 
+    | and we'll check them daily to see if any GLSAs affect your systems. 
+  p.col-md-4.text-justify
+    | While we're at it, we build distributable binary packages of any 
+    | affected components.
+  p.col-md-4.text-justify
+    | You may choose to update your containers in situ using those packages or 
+    | use the results of Online GLSA Checker to trigger building 
+    | updated base images.
+  div.col-md-4.text-center(style="padding-top: 2em; padding-bottom: 2em;")
+    a.btn.btn-primary(role="button" data-bind="page-href: '../add'")
+      span.glyphicon.glyphicon-plus
+      |  Add an image
+div.container.well
+  p.lead What others have to say about Online GLSA Checker
+  blockquote.col-md-4
+    p OGC is teh shit!
+    footer.pull-right anonymous developer
+  blockquote.col-md-4
+    p I would not trust my systems without them being tracked by Online GLSA Checker.
+    footer.pull-right ops guy
+  blockquote.col-md-4
+    p OGC gives me peace of mind because I know my IT department is happy using it.
+    footer.pull-right manage man
